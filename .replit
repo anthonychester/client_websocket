@@ -1,0 +1,5 @@
+run = "cd client_websocket && cargo build && cargo run --example testing"
+#cd client_websocket && cargo build
+#cd client_websocket && cargo run --example testing
+[nix]
+channel = "stable-21_11"
