@@ -66,10 +66,14 @@ pub fn connect(host: &'static str) {
   }
   let http_res: String = message.into_iter().map(|x| x as char).collect();
   let parse: Vec<&str> = http_res.split("\r\n").collect();
-  if parse.contains(&format!("Sec-WebSocket-Accept: {}", sws_acc).as_str()) {
+  if parse.contains(&format!("Sec-WebSocket-Accept: {}", sws_acc).as_str()) { //add more cases for code 101 and HTTP
     println!("!!!pass!!!");
+  } else {
+    println!("{} sent the following message:\n-----", host);
+    for l in parse {
+      println!("{}", l);
+    }
   }
-  println!("mes: {:?}", parse);
 
   /*
   stream
